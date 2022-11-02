@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WebviewDemo</string>
+    <string name="aerisapi_client_id">@string/client_id</string>
+    <string name="aerisapi_client_secret">@string/client_secret</string>
+    <string name="animate_play">Play</string>
+    <string name="animate_stop">Stop</string>
+    <string name="animate_time_empty">--:--</string>
+</resources>

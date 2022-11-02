@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Webview demo</title>
+</head>
+
+<meta name="viewport"
+      content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<style type='text/css'>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    #app {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+    #legend {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: none;
+        z-index: 2;
+        background: rgba(255,0,0,0.5);
+    }
+
+</style>
+
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.0/mapbox-gl.css" rel="stylesheet"/>
+<script defer src="https://api.mapbox.com/mapbox-gl-js/v2.8.0/mapbox-gl.js"></script>
+
+<link href="https://cdn.aerisapi.com/sdk/js/mapsgl/latest/aerisweather.mapsgl.css"
+      rel="stylesheet"/>
+<script src="https://cdn.aerisapi.com/sdk/js/mapsgl/1.1.0/aerisweather.mapsgl.js"></script>
+
+<script>
+    var controller;
+    var map;
+    var timeline;
+    var WEBVIEW = true; // set 'false' to run this without android
+
+    /*
+     * Javascript -> Kotlin
+     * Define all Android functions so javascript can run independently.
+     */
+    if(WEBVIEW==false) {
+        var Android = {};
+        Android.echo = 
+        Android.getZoom = 
+        Android.getBearing = 
+        Android.getPitch = 
+        Android.getFov = 
+        Android.onQueryResult =
+        Android.onCtrlMapClick =
+        Android.getLegend =
+        Android.getStartDate =
+        Android.getEndtDate =
+        Android.getCurrenttDate =
+        Android.hasWeatherLayer =
+        Android.onError = function(msg) {
+            alert(msg);
+        };
+        Android.getCenter = function(lat, lon) {
+            alert('getCenter lat:'+ lat+" lon:"+ long);
+        };
+        Android.getBounds = function(e, w, n, s) {
+            alert('getBounds east:' + e + " west:" + w + " north:" + n + " south:"+s);
+        };
+        Android.onCtrlReady = function(start, end) {
+            alert('start:'+start+" end:"+end);
+        };
+        Android.onMapClick = function(x, y, height, width, lat, lon) {
+            alert("x:"+x+" y:"+y+" h:"+ height+" w:"+ width+" lat:"+ lat+" lon:"+ lon);
+        };
+        Android.onAnimationAdvance = function (p, d) {
+            alert("pos:"+p+" date:"+d);
+        };
+
+        Android.onWindowReady =
+        Android.onAnimationResume =
+        Android.onAnimationPause =
+        Android.onAnimationStop =
+        Android.onAnimationStart =
+        Android.onCtrlRemoveLayer =
+        Android.onCtrlRemoveSource =
+        Android.onCtrlAddLayer =
+        Android.onCtrlAddSource =
+        Android.onCtrlLoadComplete =
+        Android.onCtrlLoadStart = 
+        Android.onCtrlMove =
+        Android.onConfigureMap =
+        Android.onCtrlZoom = function() {};
+    }
+
+    /*
+     * Kotlin -> Javascript - Core
+     */
+    function echo(msg) {
+        Android.echo(msg);
+    }
+
+    function getCenter() {
+        var result = controller.getCenter();
+        Android.echo("getCenter lat:"+ result.lat+" lon:"+ result.lon);
+        Android.getCenter(parseFloat(result.lat), parseFloat(result.lon));
+    }
+
+    function setCenter(lat, long) {
+        Android.echo("setCenter lat:"+ lat+" lon:"+ long);
+        controller.setCenter({ lat: parseFloat(lat), lon: parseFloat(long) });
+    }
+
+    function getZoom() {
+        var result = controller.getZoom();
+        Android.echo('getZoom' + result);
+        Android.getZoom(result);
+    }
+
+    function setZoom(zoom) {
+        var result = controller.setZoom(zoom);
+        Android.echo('setZoom' + result);
+        controller.setZoom(zoom);
+    }
+
+    function getBounds() {
+        var result = controller.getBounds();
+            Android.echo('getBounds east:' + result.east + " north:" + result.north + " west:" + result.west + " south:"+result.south);
+            Android.getBounds(result.east, result.west, result.north, result.south);
+    }
+
+    function getBearing() {
+        var result = controller.getBearing();
+        Android.echo('getBearing' + result);
+        Android.getBearing(result);
+    }
+
+    function getPitch() {
+        var result = controller.getPitch();
+        Android.echo('getPitch' + result);
+        Android.getPitch(result);
+    }
+
+    function getFov() {
+        var result = controller.getFov();
+        Android.echo('getFov' + result);
+        Android.getFov(result);
+    }
+
+    /*
+     * Javascript -> Kotlin - Layers
+     */
+    function getLegend() {
+        const target = document.getElementById('legend');
+        var child = target.children[0];
+        const items = [];
+        const children = target.querySelectorAll('.awxgl-legend-container');
+
+        children.forEach((node, i) => {
+            const key = node.getAttribute('id').replace(/^awxgl-legend-/, '');
+            const label = node.querySelector('.awxgl-legend-title').innerHTML;
+            const canvas = node.querySelector('canvas');
+            const data = canvas.toDataURL('image/png');
+            items.push({ key, label, data: data.replace(/^.+base64,/, '') });
+        });
+        var str = JSON.stringify(items);
+        Android.getLegend(str);
+    }
+
+    function addWeatherLayer(layer, options) {
+        Android.echo("addWeatherLayer:" + layer + " " + options);
+        controller.addWeatherLayer(layer, options);
+    }
+
+    function removeWeatherLayer(layer) {
+        Android.echo("removeWeatherLayer:" + layer);
+        controller.removeWeatherLayer(layer);
+    }
+
+    function hasWeatherLayer(layer) {
+        Android.echo("hasWeatherLayer:" + layer);
+        var result = controller.hasWeatherLayer(layer);
+        Android.hasWeatherLayer(result);
+    }
+
+    function query(lat, lon) {
+        var coord = { lat: Number(lat), lon: Number(lon) };
+        controller.queryPromise(coord).then((result) => {
+            var str = result? JSON.stringify(result) : "select a layer 1st";
+            Android.onQueryResult(str);
+        });
+    }
+
+    /*
+     * Javascript -> Kotlin - Timeline
+     */
+    function getStartDate() {
+        Android.echo("startDate:"+controller.timeline.startDate);
+        Android.getStartDate(controller.timeline.startDate.toString());
+    }
+
+    function getEndDate() {
+        Android.echo("endDate:"+controller.timeline.endDate);
+        Android.getEndDate(controller.timeline.endDate.toString());
+    }
+
+    function getCurrentDate() {
+        Android.echo("currentDate:"+controller.timeline.currentDate);
+        Android.getCurrentDate(controller.timeline.currentDate.toString());
+    }
+
+    /*
+     * Javascript -> Kotlin - Animation
+     */
+    function play() {
+        Android.echo('Android - play');
+        controller.timeline.play();
+    }
+
+    function pause() {
+        Android.echo('Android - pause');
+        controller.timeline.pause();
+    }
+
+    function resume() {
+        Android.echo('Android - resume');
+        controller.timeline.resume();
+    }
+
+    function stop() {
+        Android.echo('Android - stop');
+        controller.timeline.stop();
+    }
+
+    function restart() {
+        Android.echo('Android - restart');
+        controller.timeline.restart();
+    }
+
+    /*
+     * Javascript -> Kotlin - Configure
+     */
+    function configureMap(id, secret, options) {
+        const account = new aerisweather.mapsgl.Account(id, secret);
+        var cfg = JSON.parse(options);
+        var animationCfg = {};
+        animationCfg.start = new Date(cfg.start);
+        animationCfg.end = new Date(cfg.end);
+        animationCfg.duration = cfg.duration;
+        animationCfg.delay = cfg.delay;
+        animationCfg.endDelay = cfg.endDelay;
+        animationCfg.autoplay = cfg.autoplay;
+        animationCfg.repeat = cfg.repeat;
+        animationCfg.enabled = cfg.enabled;
+        animationCfg.pauseWhileLoading = cfg.pauseWhileLoading
+    
+        // web-standalone-testing
+        // var animationCfg = {};
+        // animationCfg.end = new Date("2022-10-28T13:07:32.247-05:00");
+        // animationCfg.start = new Date("2022-10-27T13:07:32.247-05:00");
+        // animationCfg.enabled = 1;
+        // animationCfg.repeat = 1;
+        // animationCfg.autoplay = 1;
+        // animationCfg.delay = 0;
+        // animationCfg.duration = 4;
+        // animationCfg.endDeplay = 1;
+        // animationCfg.pauseWhileLoading = 1;
+
+        controller = new aerisweather.mapsgl.MapboxMapController(map, { account, animation: animationCfg });
+        controller.addLegendControl(document.getElementById('legend'), {
+            width: 300
+        });
+
+        controller.on('load', () => {
+            // web-standalone-testing
+            // controller.addWeatherLayer('temperatures');
+            // controller.addWeatherLayer('dew-points');
+
+            Android.echo('MapsGL controller ready');
+            Android.onCtrlReady(timeline.startDate.toString(),
+                                timeline.endDate.toString());
+        });
+
+        const target = document.getElementById('app');
+        target.addEventListener('click', (e) => {
+            const x = e.clientX - target.clientLeft;
+            const y = e.clientY - target.clientTop;
+            const size = { width: target.clientWidth, height: target.clientHeight };
+            const coord = unproject(x, y, controller.getZoom(), controller.getCenter(), size)
+            Android.onMapClick(x, y, size.height, size.width, coord.lat, coord.lon);
+        });
+
+        controller.on('click', (e) => {
+            controller.queryPromise(e.coord).then((result) => {
+                var str = JSON.stringify(result)
+                Android.echo('click' + str);
+                Android.onCtrlMapClick(str);
+            });
+        });
+
+        controller.on('zoom', (e) => {
+            Android.onCtrlZoom();
+        });
+        controller.on('move', (e) => {
+            Android.onCtrlMove();
+        });
+        controller.on('load:start', (e) => {
+            Android.onCtrlLoadStart();
+        });
+        controller.on('load:complete', (e) => {
+            Android.onCtrlLoadComplete();
+        });
+
+        controller.on('source:add', (e) => {
+            Android.onCtrlAddSource();
+        });
+
+        controller.on('layer:add', (e) => {
+            Android.onCtrlAddLayer();
+        });
+
+        controller.on('layer:remove', (e) => {
+            Android.onCtrlRemoveSource();
+        });
+        
+        controller.on('layer:remove', (e) => {
+            Android.onCtrlRemoveLayer();
+        });
+
+        timeline = controller.timeline;
+        timeline.on('play', () => {
+            Android.onAnimationStart();
+        });
+        timeline.on('stop', () => {
+            Android.onAnimationStop();
+        });
+        timeline.on('pause', () => {
+            Android.onAnimationPause();
+        });
+        timeline.on('resume', () => {
+            Android.onAnimationResume();
+        });
+        timeline.on('advance', ({ position, date }) => {
+            Android.onAnimationAdvance(position, date.toString());
+            Android.echo('advance');
+        });
+
+        Android.onConfigureMap();
+    }
+
+    /*
+     * Common Javascript methods
+     */
+    window.onerror = function (err) {
+        Android.onError(err);
+    }
+
+    window.addEventListener('load', () => {
+        mapboxgl.accessToken = 'your mapboxGL access token';
+        map = new mapboxgl.Map({
+            container: document.getElementById('app'),
+            style: 'mapbox://styles/mapbox/light-v9',
+            center: [-94.5, 35],
+            zoom: 3
+        });
+
+        if(WEBVIEW == false) {
+        // web-standalone-testing
+            configureMap("aerisapi_client_id",  // use your aerisapi_client_id
+            "aerisapi_client_secret",           // use your aerisapi_client_secret
+            "{\"start\":\"2022-10-27T14:29:13.095-05:00\",\"end\":\"2022-10-28T14:29:13.095-05:00\",\"duration\":4.0,\"delay\":0,\"endDelay\":1.0,\"autoplay\":0,\"repeat\":1,\"enabled\":1,\"pauseWhileLoading\":0}");
+        }
+        Android.onWindowReady();
+    });
+
+    const unproject = (x, y, zoom, center, size) => {
+        const _scale = (zoom) => 256 * 0.5 / Math.PI * (2 ** zoom);
+        const _offset = (coord, zoom, size) => {
+            const pi = Math.PI;
+            const scale = 256 * 0.5 / pi * (2 ** zoom);
+
+            const lat = coord.lat * (Math.PI / 180);
+            const lon = coord.lon * (Math.PI / 180);
+            const x = scale * (lon + pi);
+            const y = scale * (pi - Math.log(Math.tan(pi * 0.25 + lat * 0.5)));
+
+            return {
+                x: (size.width * 0.5 - x), y: (size.height * 0.5 - y)
+            };
+        };
+
+        const pi = Math.PI;
+        const scale = _scale(zoom);
+
+        const offset = (center && size) ? _offset(center, zoom, size) : {
+            x: 0, y: 0
+        };
+        const x2 = x - offset.x;
+        const y2 = y - offset.y;
+
+        const lon = x2 / scale - pi;
+        const lat = 2 * (Math.atan(Math.exp(pi - y2 / scale)) - pi * 0.25);
+
+        return {
+            lat: lat * (180 / Math.PI), lon: lon * (180 / Math.PI)
+        };
+    };
+
+</script>
+
+<body>
+<div id="legend"></div>
+<div id="app"></div>
+<h1>AerisWeather MapsGL</h1>
+
+<div id='buttons'></div>
+<div id='log'></div>
+</body>
+</html>
