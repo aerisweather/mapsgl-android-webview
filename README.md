@@ -45,7 +45,7 @@ For example, to get the underlying map's current center coordinate:
 Kotlin -> Javascript call:     JSBuilder.getCenter()
 Javascript -> Kotlin response: WebAppInterface.getCenter(lat:Float, lon:Float)
 ```
-<img height="400" src="https://user-images.githubusercontent.com/116283403/199754088-10cd354f-464f-44f6-8ad9-d5df6dbe6f13.png"/>
+<img height="400" src="https://user-images.githubusercontent.com/116283403/199754935-a2f0d303-c794-4f77-bb96-48cd3557cb01.png"/>  <img height="400" src="https://user-images.githubusercontent.com/116283403/199754088-10cd354f-464f-44f6-8ad9-d5df6dbe6f13.png"/>
 
 ### Events and MapsGLViewDelegate
 
@@ -74,7 +74,7 @@ WebAppInterface.onAnimationAdvance(position: String, date: String)
 
 Please review the Kotlin example app for more in-depth knowledge of how to use many of the features provided. These examples demonstrate how to set up your mapGL including a legend view, and how to implement native controls.
 
-<img height="400" src="https://user-images.githubusercontent.com/116283403/199754113-a18d1497-e339-4d9e-b58d-5e95321ba65e.png"/> <img height="400" src="https://user-images.githubusercontent.com/116283403/199745710-a44c19bf-38ff-4c75-9918-8f060842d7d5.png"/>
+<img height="400" src="https://user-images.githubusercontent.com/116283403/199754113-a18d1497-e339-4d9e-b58d-5e95321ba65e.png"/>  <img height="400" src="https://user-images.githubusercontent.com/116283403/199745710-a44c19bf-38ff-4c75-9918-8f060842d7d5.png"/>
 
 ## Customization
 
