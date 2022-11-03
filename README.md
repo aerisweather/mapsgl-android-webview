@@ -37,7 +37,7 @@ Next, in file app/assets/mapviewAndroid.html, add your mapboxGL public access to
 3. Update and verify your permissions in strings.xml (Aeris id,secrect) and mapviewAndroid.html (MapBox access token).  Exercising method configureMap() will instantiate a valid controller object with supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
 
 
-### Getting Map Information
+## Getting Map Information
 
 For map information, use JSBuilder to call javascript function(s) and WebAppInterface to collect asynchronous response(s).
 The following map information requests are supported: 
@@ -62,7 +62,7 @@ Javascript -> Kotlin response: WebAppInterface.getCenter(lat:Float, lon:Float)
 ```
 <img height="400" src="https://user-images.githubusercontent.com/116283403/199754935-a2f0d303-c794-4f77-bb96-48cd3557cb01.png"/>  <img height="400" src="https://user-images.githubusercontent.com/116283403/199754088-10cd354f-464f-44f6-8ad9-d5df6dbe6f13.png"/>
 
-### Events and MapsGLViewDelegate
+## Events and MapsGLViewDelegate
 
 Many of the applicable [events triggered](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#events) by the `MapController` instance of our MapsGL Javascript SDK are forwarded to WebAppInterface.
 
