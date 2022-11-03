@@ -111,7 +111,7 @@ if(WEBVIEW == false) {
 ```
         
 
-By default this package uses the Mapsbox JS GL SDK in `mapviewAndroid.html`. However, if you'd rather use a different mapping library, you can change this in your app bundle's `mapviewAndroid.html` by instantiating a different map instance and updating the map controller to one provided by our MapsGL SDK. [Review our SDK documentation](https://www.aerisweather.com/docs/mapsgl/getting-started/) 
+By default this package uses the Mapsbox JS GL SDK in `mapviewAndroid.html`. However, if you'd rather use a different mapping library, you can change this in your app bundle's `mapviewAndroid.html` by instantiating a different map instance and updating the map controller to one provided from our MapsGL SDK. [Review our SDK documentation](https://www.aerisweather.com/docs/mapsgl/getting-started/) on how to configure its usage for different mapping libraries.
 
 ## Support
 
