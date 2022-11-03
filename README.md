@@ -10,7 +10,7 @@ You'll first need access to our AerisWeather data and services. If you don't alr
 
    https://github.com/aerisweather/mapsgl-android-webview.git
 
-2. Open project with Android Studio.
+2. Open project with Android Studio [Chipmunk|2021.2.1 Patch2 or later](https://androidstudio.googleblog.com/2022/08/android-studio-chipmunk-202121-patch-2.html) Android Gradle Plugin Version 7.2.2 Gradle Version 7.5.1.
 
 
 ### Aeris id/secret, Mapbox access token
