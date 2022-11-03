@@ -1,6 +1,6 @@
 # mapsgl-android-webview
 
-Integrate [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and features into Android applications with Webview and our example mapviewAndroid.html. In a Webview, a map with weather data is rendered through our [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/) using the webview.evaluateJavascript method.   Webview.evaluateJavascript supports native Kotlin and Java code to control your map and its weather content.
+Integrate [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and features into Android applications with Webview and our example mapviewAndroid.html. In a Webview, a map with weather data is rendered through our [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/) using the webview.evaluateJavascript() method.   Webview.evaluateJavascript() supports javascript script send from native Kotlin environment to control your map and its weather content.
 
 ## Permissions
 
@@ -34,7 +34,7 @@ Next, in file app/assets/mapviewAndroid.html, add your mapboxGL public access to
    Android Gradle Plugin Version 7.2.2 \
    Gradle Version 7.5.1.
    
-3. Update and verify your permissions in strings.xml (Aeris id,secrect) and mapviewAndroid.html (MapBox access token).  Exercising method configureMap() will instantiate a valid controller object with supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
+3. Update and verify your permissions in strings.xml (Aeris id,secrect) and mapviewAndroid.html (MapBox access token).  Exercising method configureMap() will instantiate a valid Mapcontroller object with supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
 
 
 ## Getting Map Information
