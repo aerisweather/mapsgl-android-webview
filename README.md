@@ -87,7 +87,7 @@ WebAppInterface.onAnimationAdvance(position: String, date: String)
 
 ## Example App
 
-Please review the Kotlin example app for more in-depth knowledge of how to use many of the features provided. These examples demonstrate how to set up your mapGL including a legend view, and how to implement native controls.
+Please review the Kotlin example app for additional features provided. These examples demonstrate how to set up your mapGL including a legend view, and how to implement native-javascript interop.
 
 <img height="400" src="https://user-images.githubusercontent.com/116283403/199754113-a18d1497-e339-4d9e-b58d-5e95321ba65e.png"/>  <img height="400" src="https://user-images.githubusercontent.com/116283403/199745710-a44c19bf-38ff-4c75-9918-8f060842d7d5.png"/>
 
@@ -111,7 +111,7 @@ if(WEBVIEW == false) {
 ```
         
 
-By default this package uses the Mapsbox JS GL SDK in `mapviewAndroid.html`. However, if you'd rather use a different mapping library, you can change this in your app bundle's `mapviewAndroid.html` by instantiating a different map instance and updating the map controller to one supported and provided by our MapsGL SDK. [Review our SDK documentation](https://www.aerisweather.com/docs/mapsgl/getting-started/) on how to configure its usage for different mapping libraries.
+By default this package uses the Mapsbox JS GL SDK in `mapviewAndroid.html`. However, if you'd rather use a different mapping library, you can change this in your app bundle's `mapviewAndroid.html` by instantiating a different map instance and updating the map controller to one provided by our MapsGL SDK. [Review our SDK documentation](https://www.aerisweather.com/docs/mapsgl/getting-started/) 
 
 ## Support
 
