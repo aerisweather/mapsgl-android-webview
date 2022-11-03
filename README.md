@@ -15,24 +15,27 @@ You'll first need access to our AerisWeather data and services. If you don't alr
    Gradle Version 7.5.1.
 
 
-### Aeris id/secret, Mapbox access token
+## Permissions
 
-Including a MapsGL view in your app requires you to first set up your account using `MapsGLAccount` and providing your keys in string.xml file:
+#### Aeris id and secret
+
+Including a MapsGL view in your app requires you to first set up your account using `MapsGLAccount` and providing your keys in string.xml file [You can get one for free](https://www.aerisweather.com/pricing/).
 
 ```
 <resources>
     <string name="aerisapi_client_id">Your-client-id</string>
     <string name="aerisapi_client_secret">Your-client-secret</string>
 ```
+#### Mapbox access token
 
-Next, in file app/assets/mapviewAndroid.html, add your mapboxGL public access token as [documented by mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/)
+Next, in file app/assets/mapviewAndroid.html, add your mapboxGL public access token as [documented by mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/).
 
 ```
  window.addEventListener('load', () => {
         mapboxgl.accessToken = 'Your-mapboxGL-public-access-token';
 ```
 
-Now, you can use the method configureMap() which contains your account information and any other supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration):
+Now, you can use the method configureMap() which contains your account information and any other supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
 
 
 ### Getting Map Information
