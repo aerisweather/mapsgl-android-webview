@@ -8,7 +8,7 @@ You'll first need access to our AerisWeather data and services. If you don't alr
 
 1. Clone project to your working directory.
 
-https://github.com/aerisweather/mapsgl-android-webview.git
+   https://github.com/aerisweather/mapsgl-android-webview.git
 
 2. Open project with Android Studio.
 
@@ -40,8 +40,8 @@ For map information, such as its current center coordinate, zoom level, whether 
 For example, to get the underlying map's current center coordinate:
 
 ```
-call: JSBuilder.getCenter()
-response: WebAppInterface.getCenter(lat:Float, lon:Float)
+Kotlin -> Javascript call:     JSBuilder.getCenter()
+Javascript -> Kotlin response: WebAppInterface.getCenter(lat:Float, lon:Float)
 ```
 
 ### Events and MapsGLViewDelegate
@@ -74,6 +74,22 @@ Review the example apps for Kotlin for more in-depth knowledge of how to use man
 ## Customization
 
 If you're looking for even more customization options beyond what's supported by this package, you can clone this repo and update the included `mapviewAndroid.html` file with additional configurations and options supported by our core [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/). 
+
+To run mapviewAndroid.html in a browser (without Android), update flag:
+
+```
+var WEBVIEW = false; // set 'false' to run this without android
+```
+
+Insert your aeris id/secret in Javascript configurMap() method.
+
+```
+if(WEBVIEW == false) {
+        // web-standalone-testing
+            configureMap("aerisapi_client_id",  // use your aerisapi_client_id
+            "aerisapi_client_secret",           // use your aerisapi_client_secret
+```
+        
 
 By default this package uses the Mapsbox JS GL SDK in `mapviewAndroid.html`. However, if you'd rather use a different mapping library, you can change this in your app bundle's `mapviewAndroid.html` by instantiating a different map instance and updating the map controller to one supported and provided by our MapsGL SDK. [Review our SDK documentation](https://www.aerisweather.com/docs/mapsgl/getting-started/) on how to configure its usage for different mapping libraries.
 
