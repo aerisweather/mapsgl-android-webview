@@ -39,9 +39,10 @@ Next, in file app/assets/mapviewAndroid.html, add your mapboxGL public access to
 
 ### Getting Map Information
 
-For map information, such as its current center coordinate, zoom level, whether it contains a particular weather layer, use JSBuilder to call javascript function(s) and WebAppInterface to collect asynchronous response(s).
+For map information, use JSBuilder to call javascript function(s) and WebAppInterface to collect asynchronous response(s).
+Example map information: current center coordinate, zoom level, bounds, bearing, pitch and fov.
 
-For example, to get the underlying map's current center coordinate:
+To retrieve map's current center coordinate:
 
 ```
 Kotlin -> Javascript call:     JSBuilder.getCenter()
