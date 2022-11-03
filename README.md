@@ -13,7 +13,7 @@ https://github.com/aerisweather/mapsgl-android-webview.git
 2. Open project with Android Studio.
 
 
-### Id, Secret, Access token
+### Aeris id/secret, Mapbox access token
 
 Including a MapsGL view in your app requires you to first set up your account using `MapsGLAccount` and providing your keys in string.xml file:
 
@@ -23,7 +23,7 @@ Including a MapsGL view in your app requires you to first set up your account us
     <string name="aerisapi_client_secret">Your-client-secret</string>
 ```
 
-Next, in file app/assets/index.html, add your mapboxGL public access token as [documented by mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/)
+Next, in file app/assets/mapviewAndroid.html, add your mapboxGL public access token as [documented by mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/)
 
 ```
  window.addEventListener('load', () => {
@@ -73,9 +73,9 @@ Review the example apps for Kotlin for more in-depth knowledge of how to use man
 
 ## Customization
 
-If you're looking for even more customization options beyond what's supported by this package, you can clone this repo and update the included `index.html` file with additional configurations and options supported by our core [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/). 
+If you're looking for even more customization options beyond what's supported by this package, you can clone this repo and update the included `mapviewAndroid.html` file with additional configurations and options supported by our core [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/). 
 
-By default this package uses the Mapsbox JS GL SDK in `index.html`. However, if you'd rather use a different mapping library, you can change this in your app bundle's `index.html` by instantiating a different map instance and updating the map controller to one supported and provided by our MapsGL SDK. [Review our SDK documentation](https://www.aerisweather.com/docs/mapsgl/getting-started/) on how to configure its usage for different mapping libraries.
+By default this package uses the Mapsbox JS GL SDK in `mapviewAndroid.html`. However, if you'd rather use a different mapping library, you can change this in your app bundle's `mapviewAndroid.html` by instantiating a different map instance and updating the map controller to one supported and provided by our MapsGL SDK. [Review our SDK documentation](https://www.aerisweather.com/docs/mapsgl/getting-started/) on how to configure its usage for different mapping libraries.
 
 ## Support
 
