@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
  * Description: supported javascript functions to call
  *              Kotlin -> Javascript interOp
  *
- * NOTE:        See index.html for javascript functions
+ * NOTE:        See mapviewAndroid.html for javascript functions
  */
 class JSBuilder(
     private val context: Context,

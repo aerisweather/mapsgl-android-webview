@@ -126,7 +126,7 @@ class MainActivity : ComponentActivity() {
         decodeLegend: (jsonString: String) -> Unit,
         updateTime: (time: String) -> Unit
     ) {
-        val mUrl = "file:///android_asset/index.html"
+        val mUrl = "file:///android_asset/mapviewAndroid.html"
 
         AndroidView(factory = {
             WebView(it).apply {
