@@ -1,6 +1,6 @@
 # mapsgl-android-webview
 
-MapsGLWebView for Android allows developers to effortlessly integrate our [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and features into their Android applications. Via a Webview, a map with weather data is rendered through our [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/) using the webview.evaluateJavascript method.   Webview.evaluateJavascript supports native Kotlin and Java code to control your map and its weather content.
+MapsGLWebView for Android allows developers to integrate our [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and features into their Android applications. Via a Webview, a map with weather data is rendered through our [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/) using the webview.evaluateJavascript method.   Webview.evaluateJavascript supports native Kotlin and Java code to control your map and its weather content.
 
 You'll first need access to our AerisWeather data and services. If you don't already have an account and active subscription, [sign up for an AerisWeather Developer account](https://www.aerisweather.com/signup/developer/). Upon signing up, a demo application with your client ID and secret keys will be generated which you can use for your account configuration below.
 
@@ -13,7 +13,7 @@ https://github.com/aerisweather/mapsgl-android-webview.git
 2. Open project with Android Studio.
 
 
-### Usage
+### Id, Secret, Access token
 
 Including a MapsGL view in your app requires you to first set up your account using `MapsGLAccount` and providing your keys in string.xml file:
 
