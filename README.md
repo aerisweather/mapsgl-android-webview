@@ -1,6 +1,6 @@
 # mapsgl-android-webview
 
-Integrate our [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and features into Android applications with Webview and our mapviewAndroid.html. In a Webview, a map with weather data is rendered through our [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/) using the webview.evaluateJavascript method.   Webview.evaluateJavascript supports native Kotlin and Java code to control your map and its weather content.
+Integrate [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and features into Android applications with Webview and our example mapviewAndroid.html. In a Webview, a map with weather data is rendered through our [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/) using the webview.evaluateJavascript method.   Webview.evaluateJavascript supports native Kotlin and Java code to control your map and its weather content.
 
 ## Permissions
 
