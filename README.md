@@ -2,24 +2,13 @@
 
 Integrate our [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and features into Android applications with Webview and our mapviewAndroid.html. In a Webview, a map with weather data is rendered through our [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/) using the webview.evaluateJavascript method.   Webview.evaluateJavascript supports native Kotlin and Java code to control your map and its weather content.
 
-You'll first need access to our AerisWeather data and services. If you don't already have an account and active subscription, [sign up for an AerisWeather Developer account](https://www.aerisweather.com/signup/developer/). Upon signing up, a demo application with your client ID and secret keys will be generated which you can use for your account configuration below.
-
-## Getting Started
-
-1. Clone project to your working directory.
-
-   https://github.com/aerisweather/mapsgl-android-webview.git
-
-2. Open project with Android Studio [Chipmunk|2021.2.1 Patch2](https://androidstudio.googleblog.com/2022/08/android-studio-chipmunk-202121-patch-2.html) \
-   Android Gradle Plugin Version 7.2.2 \
-   Gradle Version 7.5.1.
-
-
 ## Permissions
 
 #### Aeris id and secret
 
-Including a MapsGL view in your app requires you to first set up your account using `MapsGLAccount` and providing your keys in string.xml file [You can get one for free](https://www.aerisweather.com/pricing/).
+You'll first need access to our AerisWeather data and services. If you don't already have an account and active subscription, [sign up for an AerisWeather Developer account](https://www.aerisweather.com/signup/developer/). Upon signing up, a demo application with your client ID and secret keys will be generated which you can use for your account configuration below.
+
+Including a MapsGL view in your app requires you to first set up your account using `MapsGLAccount` and providing your keys in string.xml file.
 
 ```
 <resources>
@@ -35,7 +24,17 @@ Next, in file app/assets/mapviewAndroid.html, add your mapboxGL public access to
         mapboxgl.accessToken = 'Your-mapboxGL-public-access-token';
 ```
 
-Now, you can use the method configureMap() which contains your account information and any other supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
+## Getting Started
+
+1. Clone project to your working directory.
+
+   https://github.com/aerisweather/mapsgl-android-webview.git
+
+2. Open project with Android Studio [Chipmunk|2021.2.1 Patch2](https://androidstudio.googleblog.com/2022/08/android-studio-chipmunk-202121-patch-2.html) \
+   Android Gradle Plugin Version 7.2.2 \
+   Gradle Version 7.5.1.
+   
+3. Update and verify your permissions in strings.xml(Aeris id,secrect) and mapviewAndroid.html(MapBox access token).  Exercising method configureMap() will instantiate a valid controller object with supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
 
 
 ### Getting Map Information
