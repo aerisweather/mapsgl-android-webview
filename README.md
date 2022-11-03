@@ -71,7 +71,7 @@ WebAppInterface.onAnimationAdvance(position: String, date: String)
 
 ## Example App
 
-Review the example apps for Kotlin for more in-depth knowledge of how to use many of the features provided. These examples demonstrate how to set up your mapGL including a legend view, and how to implement native controls.
+Please review the Kotlin example app for more in-depth knowledge of how to use many of the features provided. These examples demonstrate how to set up your mapGL including a legend view, and how to implement native controls.
 
 <img height="400" src="https://user-images.githubusercontent.com/116283403/199745708-3b6f438c-d928-40a6-9248-d912fe5df091.png"/> <img height="400" src="https://user-images.githubusercontent.com/116283403/199745710-a44c19bf-38ff-4c75-9918-8f060842d7d5.png"/>
 
