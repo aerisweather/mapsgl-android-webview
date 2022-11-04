@@ -8,7 +8,7 @@ Integrate [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and fe
 
 You'll first need access to our AerisWeather data and services. If you don't already have an account and active subscription, [sign up for an AerisWeather Developer account](https://www.aerisweather.com/signup/developer/). Upon signing up, a demo application with your client ID and secret keys will be generated which you can use for your account configuration below.
 
-Including a MapsGL view in your app requires you to first set up your account using `MapsGLAccount` and providing your keys in strings.xml file.
+Including a MapsGLWebview in your app requires you to first set up your account using `MapsGLAccount` and providing your keys in file MapsGLWebviewlib/src/main/res/values/strings.xml.
 
 ```
 <resources>
@@ -17,7 +17,7 @@ Including a MapsGL view in your app requires you to first set up your account us
 ```
 #### Mapbox access token
 
-Next, in file app/assets/mapview_android.html, add your mapboxGL public access token as [documented by mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/).
+Next, add your mapboxGL public access token as [documented by mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/) in file MapsGLWebviewlib/src/main/assets/mapview_android.html.
 
 ```
  window.addEventListener('load', () => {
@@ -34,16 +34,18 @@ Next, in file app/assets/mapview_android.html, add your mapboxGL public access t
    Android Gradle Plugin Version 7.2.2 \
    Gradle Version 7.5.1.
    
-3. Update and verify your permissions in strings.xml (Aeris id,secrect) and mapview_android.html (MapBox access token).  Exercising method configureMap() will instantiate a valid Mapcontroller object with supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
+3. Update and verify your permissions in library's strings.xml (Aeris id,secrect) and mapview_android.html (MapBox access token).  Exercising method configureMap() will instantiate a valid Mapcontroller object with supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
 
 ## Kotlin-Javascript Interop
 
-Supplied in this example app for MapsGL InterOp are three files: \
+Supplied in this example for MapsGL InterOp are four files: \
 These classes enable developer with MapsGL to render and interact with maps. \
 a. JSBuilder.kt: Kotlin -> Javascript \
 b. WebAppInterface.kt: Javascript -> Kotlin \
 c. mapview_android.html: Javascript MapsGL interface \
-<img width="400" src="https://user-images.githubusercontent.com/116283403/200027921-e8108155-b666-47ba-9299-1a8070d23f61.png"/>
+d. MapsGLWebview.kt: Host above html file 
+
+<img width="450" src="https://user-images.githubusercontent.com/116283403/200027921-e8108155-b666-47ba-9299-1a8070d23f61.png"/>
 
 ## Getting Map Information
 
