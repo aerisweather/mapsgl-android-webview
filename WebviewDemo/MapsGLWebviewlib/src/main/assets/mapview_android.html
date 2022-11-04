@@ -178,7 +178,12 @@
 
     function addWeatherLayer(layer, options) {
         Android.echo("addWeatherLayer:" + layer + " " + options);
-        controller.addWeatherLayer(layer, options);
+        try {
+           controller.addWeatherLayer(layer, options);
+        }
+        catch(ex) {
+            Android.onError(ex);
+        }
     }
 
     function removeWeatherLayer(layer) {
