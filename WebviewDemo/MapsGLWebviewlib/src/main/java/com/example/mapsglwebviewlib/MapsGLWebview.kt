@@ -17,11 +17,9 @@ class MapsGLWebview(
 
     companion object {
         val mUrl = "file:///android_asset/mapview_android.html"
-
     }
 
     private val jsBuilder: JSBuilder = JSBuilder(context, this)
-
 
     init {
         getJSBuilder(jsBuilder)

@@ -54,7 +54,6 @@ fun ComposeSnackbar(
                         rememberScrollState()
                     )
             )
-
         }, modifier = Modifier.padding(10.dp)) {
             Text(text = msg ?: "", color = Color.White)
         }

@@ -131,7 +131,6 @@ class MainActivity : ComponentActivity() {
         }, update = {
             it.load()
         })
-
     }
 }
 
