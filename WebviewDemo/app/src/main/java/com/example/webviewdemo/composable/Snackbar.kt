@@ -1,4 +1,4 @@
-package com.example.webviewdemo.composable
+package com.example.webviewdemo
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -20,9 +20,7 @@ import androidx.compose.ui.unit.dp
  */
 @Composable
 fun ComposeSnackbar(
-    showSnackbar: (open: Boolean, msg: String?) -> Unit,
-    msg: String?,
-    resourceId: Int
+    viewModel: MainViewModel,
 ) {
     Row(
         modifier = Modifier
@@ -38,24 +36,25 @@ fun ComposeSnackbar(
                 contentAlignment = Alignment.CenterEnd
             ) {
                 IconButton(onClick = {
-                    showSnackbar(false, null)
+                    viewModel.openSnackbar.value = false
                 }) {
                     Icon(
-                        painterResource(id = resourceId),
+                        painterResource(id = R.drawable.ic_info),
                         contentDescription = "snack",
                         tint = Color.White,
                     )
                 }
             }
             Text(
-                text = msg ?: "", color = Color.White, modifier = Modifier
+                text = viewModel.msg.value ?: "", color = Color.White, modifier = Modifier
                     .padding(5.dp)
                     .verticalScroll(
                         rememberScrollState()
                     )
             )
+
         }, modifier = Modifier.padding(10.dp)) {
-            Text(text = msg ?: "", color = Color.White)
+            Text(text = viewModel.msg.value ?: "", color = Color.White)
         }
     }
 }

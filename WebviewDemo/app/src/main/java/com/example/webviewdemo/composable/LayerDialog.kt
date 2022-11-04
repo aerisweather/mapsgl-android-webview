@@ -14,20 +14,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.example.mapsglwebviewlib.interop.JSBuilder
+import com.example.webviewdemo.MainViewModel
 import com.example.webviewdemo.model.MapLayer
 
 /*
  * Description: Composable UI Dialog box to select MapsGL layers
  */
 @Composable
-fun ComposeLayerDialog(
-    mapLayers: List<MapLayer>,
-    showDialog: (open: Boolean) -> Unit,
-    jsBuilder: JSBuilder? = null
-) {
+fun ComposeLayerDialog(viewModel: MainViewModel) {
     Dialog(
-        onDismissRequest = { showDialog(false) },
+        onDismissRequest = { viewModel.openDialog.value = false },
         DialogProperties(dismissOnBackPress = true, dismissOnClickOutside = true),
     ) {
         LazyColumn(
@@ -36,9 +32,9 @@ fun ComposeLayerDialog(
             ), modifier = Modifier.width(800.dp)
         ) {
             items(
-                items = mapLayers,
+                items = viewModel.mapLayers,
                 itemContent = {
-                    ComposeLayersSelection(it, showDialog, jsBuilder)
+                    ComposeLayersSelection(it, viewModel)
                 }
             )
         }
@@ -48,18 +44,17 @@ fun ComposeLayerDialog(
 @Composable
 fun ComposeLayersSelection(
     mapLayer: MapLayer,
-    showDialog: (open: Boolean) -> Unit,
-    jsBuilder: JSBuilder? = null
+    viewModel: MainViewModel
 ) {
     var onClickLayerCard: (mapLayer: MapLayer) -> Unit = {
         if (it.isEnabled) {
-            jsBuilder?.removeWeatherLayer?.let { it1 -> it1(mapLayer.layer.code) }
+            viewModel.jsBuilder?.removeWeatherLayer?.let { it1 -> it1(mapLayer.layer.code) }
             mapLayer.isEnabled = false
         } else {
-            jsBuilder?.addWeatherLayer?.let { it1 -> it1(mapLayer.layer.code, "") }
+            viewModel.jsBuilder?.addWeatherLayer?.let { it1 -> it1(mapLayer.layer.code, "") }
             mapLayer.isEnabled = true
         }
-        showDialog(false)
+        viewModel.openDialog.value = false
     }
 
     Card(

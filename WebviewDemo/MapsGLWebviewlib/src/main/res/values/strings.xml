@@ -1,4 +1,5 @@
 <resources>
     <string name="aerisapi_client_id">Your-aeris-api-id</string>
     <string name="aerisapi_client_secret">Your-aeris-api-secret</string>
+
 </resources>
