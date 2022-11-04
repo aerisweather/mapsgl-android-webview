@@ -45,7 +45,7 @@ b. WebAppInterface.kt: Javascript -> Kotlin \
 c. mapview_android.html: Javascript MapsGL interface \
 d. MapsGLWebview.kt: Host above html file 
 
-<img width="450" src="https://user-images.githubusercontent.com/116283403/200027921-e8108155-b666-47ba-9299-1a8070d23f61.png"/>
+<img width="450" src="https://user-images.githubusercontent.com/116283403/200030693-19f00295-efc3-4ef8-a9ba-b17b0cc1bcd3.png"/>
 
 ## Getting Map Information
 
