@@ -36,6 +36,14 @@ Next, in file app/assets/mapviewAndroid.html, add your mapboxGL public access to
    
 3. Update and verify your permissions in strings.xml (Aeris id,secrect) and mapviewAndroid.html (MapBox access token).  Exercising method configureMap() will instantiate a valid Mapcontroller object with supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
 
+## Kotlin-Javascript Interop
+
+Supplied in this example app for MapsGL InterOp are three files: \
+These classes enable developer with MapsGL to render and interact with maps. \
+a. JSBuilder.kt: Kotlin -> Javascript \
+b. WebAppInterface.kt: Javascript -> Kotlin \
+c. mapviewAndroid.html: Javascript MapsGL interface \
+<img width="400" src="https://user-images.githubusercontent.com/116283403/199997255-778efb6b-8de5-465a-8230-ab1377f62e51.png"/>
 
 ## Getting Map Information
 
