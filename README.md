@@ -43,7 +43,7 @@ These classes enable developer with MapsGL to render and interact with maps. \
 a. JSBuilder.kt: Kotlin -> Javascript \
 b. WebAppInterface.kt: Javascript -> Kotlin \
 c. mapviewAndroid.html: Javascript MapsGL interface \
-<img width="400" src="https://user-images.githubusercontent.com/116283403/199997255-778efb6b-8de5-465a-8230-ab1377f62e51.png"/>
+<img width="400" src="https://user-images.githubusercontent.com/116283403/200000480-a075d121-009c-4db3-afb8-82cae53d383a.png"/>
 
 ## Getting Map Information
 
