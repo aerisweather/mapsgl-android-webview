@@ -1,11 +1,7 @@
 package com.example.webviewdemo
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
-import android.view.ViewGroup
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Scaffold
@@ -13,10 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.viewinterop.AndroidView
+import com.example.mapsglwebviewlib.MapsGLWebview
+import com.example.mapsglwebviewlib.interop.JSBuilder
 import com.example.webviewdemo.composable.ComposeLayerDialog
 import com.example.webviewdemo.composable.ComposeSnackbar
-import com.example.webviewdemo.interop.JSBuilder
-import com.example.webviewdemo.interop.WebAppInterface
 import com.example.webviewdemo.model.Legend
 import com.example.webviewdemo.model.MapLayer
 
@@ -31,13 +27,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeMain(this.baseContext)
+            ComposeMain()
         }
     }
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
-    fun ComposeMain(context: Context) {
+    fun ComposeMain() {
         val openMenu = remember { mutableStateOf(false) }
         val openDialog = remember { mutableStateOf(false) }
         val openSnackbar = remember { mutableStateOf(false) }
@@ -92,7 +88,7 @@ class MainActivity : ComponentActivity() {
 
             content = {
                 ComposeWebView(
-                    context, showSnackbar, showLegend, updateTime
+                    showLegend, showSnackbar, updateTime
                 )
                 if (openDialog.value) {
                     ComposeLayerDialog(
@@ -121,31 +117,21 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     @Composable
     fun ComposeWebView(
-        context: Context,
-        showSnackbar: (open: Boolean, msg: String?) -> Unit,
         decodeLegend: (jsonString: String) -> Unit,
+        showSnackbar: (open: Boolean, msg: String?) -> Unit,
         updateTime: (time: String) -> Unit
     ) {
-        val mUrl = "file:///android_asset/mapviewAndroid.html"
+        val getJSBuilder: (builder: JSBuilder) -> Unit = {
+            jsBuilder = it
+        }
 
         AndroidView(factory = {
-            WebView(it).apply {
-                jsBuilder = JSBuilder(context, this)
-                layoutParams = ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-                )
-                webViewClient = WebViewClient()
-                settings.javaScriptEnabled = true
-                addJavascriptInterface(
-                    WebAppInterface(decodeLegend, showSnackbar, updateTime, jsBuilder),
-                    "Android"
-                )
-                loadUrl(mUrl)
-            }
+            MapsGLWebview(it, decodeLegend, showSnackbar, updateTime, getJSBuilder)
+
         }, update = {
-            it.loadUrl(mUrl)
+            it.load()
         })
+
     }
 }
 

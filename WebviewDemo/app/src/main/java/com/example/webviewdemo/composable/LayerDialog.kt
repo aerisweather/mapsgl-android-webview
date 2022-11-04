@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.example.webviewdemo.interop.JSBuilder
+import com.example.mapsglwebviewlib.interop.JSBuilder
 import com.example.webviewdemo.model.MapLayer
 
 /*

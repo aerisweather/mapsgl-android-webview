@@ -1,9 +1,8 @@
-package com.example.webviewdemo.interop
+package com.example.mapsglwebviewlib.interop
 
 import android.content.Context
 import android.webkit.WebView
-import com.example.webviewdemo.R
-import com.example.webviewdemo.model.MapsGLAnimationOptions
+import com.example.mapsglwebviewlib.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -13,7 +12,7 @@ import kotlinx.coroutines.launch
  * Description: supported javascript functions to call
  *              Kotlin -> Javascript interOp
  *
- * NOTE:        See mapviewAndroid.html for javascript functions
+ * NOTE:        See mapview_android.html for javascript functions
  */
 class JSBuilder(
     private val context: Context,

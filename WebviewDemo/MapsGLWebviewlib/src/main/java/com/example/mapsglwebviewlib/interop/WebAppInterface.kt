@@ -1,10 +1,6 @@
-package com.example.webviewdemo.interop
+package com.example.mapsglwebviewlib.interop
 
 import android.webkit.JavascriptInterface
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 /*
  * Description: Javascript events

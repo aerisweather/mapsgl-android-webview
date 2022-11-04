@@ -1,4 +1,4 @@
-package com.example.webviewdemo.model
+package com.example.mapsglwebviewlib.interop
 
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
