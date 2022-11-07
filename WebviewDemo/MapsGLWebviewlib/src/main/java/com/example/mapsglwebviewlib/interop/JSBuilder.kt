@@ -12,11 +12,11 @@ import kotlinx.coroutines.launch
  * Description: supported javascript functions to call
  *              Kotlin -> Javascript interOp
  *
- * NOTE:        See mapview_android.html for javascript functions
+ * NOTE:        See index.html for javascript functions
  */
 class JSBuilder(
     private val context: Context,
-    private val webView: WebView?,
+    private val webView: WebView?
 ) {
     fun echo() = requestJS("echo('abc')")
 
@@ -44,9 +44,6 @@ class JSBuilder(
     fun configureMap() {
         val id = context.resources.getString(R.string.aerisapi_client_id)
         val secret = context.resources.getString(R.string.aerisapi_client_secret)
-        /*
-         * TODO Implement Options
-         */
         val options = MapsGLAnimationOptions().toString()
         requestJS("configureMap(\"$id\", \"$secret\", '$options')")
     }

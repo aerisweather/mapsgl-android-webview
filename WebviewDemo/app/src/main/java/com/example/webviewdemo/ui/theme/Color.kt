@@ -2,7 +2,6 @@ package com.example.webviewdemo.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val BrandPrimary = Color(0xFF00AAE5)
+val BrandSecondary = Color(0xFFe5f8ff)
+val BrandVariant = Color(0xFF00394d)

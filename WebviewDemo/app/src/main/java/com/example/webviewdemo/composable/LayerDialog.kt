@@ -9,12 +9,15 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.webviewdemo.MainViewModel
+import com.example.webviewdemo.R
+import com.example.webviewdemo.TimelineState
 import com.example.webviewdemo.model.MapLayer
 
 /*
@@ -55,6 +58,20 @@ fun ComposeLayersSelection(
             mapLayer.isEnabled = true
         }
         viewModel.openDialog.value = false
+
+        /*
+         * If no layer selected...
+         *  1. hide Animation control
+         *  2. if animation is running, stop it.
+         */
+        viewModel.apply {
+            if (!hasSelectedLayer()) {
+                openAnimateControl.value = false
+                if (animateState.value is TimelineState.Play) {
+                    jsBuilder?.stop()
+                }
+            }
+        }
     }
 
     Card(
@@ -70,13 +87,13 @@ fun ComposeLayersSelection(
                 Row(
                     Modifier
                         .fillMaxWidth()
-                        .background(Color.Black)
+                        .background(colorResource(id = R.color.brand_variant))
                 ) {
                     Checkbox(
                         checked = isEnabled,
                         colors = CheckboxDefaults.colors(
                             uncheckedColor = Color.White,
-                            checkedColor = Color.Green
+                            checkedColor = colorResource(id = R.color.brand_primary)
                         ),
                         onCheckedChange = {
                             onClickLayerCard(mapLayer)
@@ -89,7 +106,7 @@ fun ComposeLayersSelection(
                         textAlign = TextAlign.Left
                     )
                 }
-                Divider(color = Color(0xFF808080), thickness = 1.dp)
+                Divider(color = colorResource(id = R.color.brand_variant), thickness = 1.dp)
             }
         }
     }

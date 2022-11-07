@@ -14,8 +14,6 @@ import com.example.webviewdemo.*
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ComposeMain(viewModel: MainViewModel) {
-    var msg: String? = null
-
     Scaffold(
         topBar = {
             ComposeTopBar(viewModel)

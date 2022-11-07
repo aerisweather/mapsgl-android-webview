@@ -41,6 +41,14 @@ class MainViewModel : ViewModel() {
     val showProgress: (show: Boolean) -> Unit = {
         openProgress.value = it
     }
+
+    fun hasSelectedLayer():Boolean {
+        for (layer in mapLayers) {
+            if (layer.isEnabled)
+                return true
+        }
+        return false
+    }
 }
 
 sealed class TimelineState {

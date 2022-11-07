@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
@@ -50,7 +51,11 @@ fun ComposeAnimationControl(viewModel: MainViewModel) {
                 ) {
                     Text(text = viewModel.animateTime.value.replace("(", "\n("))
                     if (viewModel.openProgress.value) {
-                        CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterEnd))
+                        CircularProgressIndicator(
+                            modifier = Modifier.align(Alignment.CenterEnd), color = colorResource(
+                                id = R.color.brand_primary
+                            )
+                        )
                     }
                 }
             }

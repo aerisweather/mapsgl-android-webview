@@ -3,25 +3,25 @@ package com.example.webviewdemo.model
 /*
  * Description: MapsGL layers for selection / overlay rendering
  */
-data class MapLayer(val layer: Layers, var isEnabled: Boolean = false) {
+data class MapLayer(val layer: LayerEnum, var isEnabled: Boolean = false) {
 
     companion object {
         fun listAll(): List<MapLayer> = mutableListOf<MapLayer>(
-            MapLayer(Layers.TEMP),
-            MapLayer(Layers.WIND_SPEED),
-            MapLayer(Layers.WIND_PARTICLE),
-            MapLayer(Layers.WIND_BARBS),
-            MapLayer(Layers.ALERT),
-            MapLayer(Layers.ALERT_OUTLINE),
-            MapLayer(Layers.DEW_POINTS),
-            MapLayer(Layers.PRESSURE),
-            MapLayer(Layers.PRESSURE_CONTOUR),
-            MapLayer(Layers.FIRES_OB_HEAT),
+            MapLayer(LayerEnum.TEMP),
+            MapLayer(LayerEnum.WIND_SPEED),
+            MapLayer(LayerEnum.WIND_PARTICLE),
+            MapLayer(LayerEnum.WIND_BARBS),
+            MapLayer(LayerEnum.ALERT),
+            MapLayer(LayerEnum.ALERT_OUTLINE),
+            MapLayer(LayerEnum.DEW_POINTS),
+            MapLayer(LayerEnum.PRESSURE),
+            MapLayer(LayerEnum.PRESSURE_CONTOUR),
+            MapLayer(LayerEnum.FIRES_OB_HEAT),
         ).toList()
     }
 }
 
-enum class Layers(
+enum class LayerEnum(
     val code: String,           // javascript controller input to set layer
     val print: String           // Dialog UI for user
 ) {

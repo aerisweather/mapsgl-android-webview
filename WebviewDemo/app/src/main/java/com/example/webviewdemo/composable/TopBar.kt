@@ -5,8 +5,10 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.webviewdemo.ui.theme.BrandPrimary
 
 /*
  * Description: Application Toolbar with buttons: menu, animation(play), dialog(layers)
@@ -16,10 +18,14 @@ fun ComposeTopBar(viewModel: MainViewModel) {
     TopAppBar(title = {
         Text("MapsGL Webview", color = Color.White)
     },
-        backgroundColor = Color(0xff0f9d58),
+        backgroundColor = colorResource(id = R.color.brand_primary),
         actions = {
             IconButton(onClick = {
-                viewModel.openAnimateControl.value = true
+                viewModel.apply {
+                    if (hasSelectedLayer()) {
+                        openAnimateControl.value = true
+                    }
+                }
             }) {
                 Icon(
                     painterResource(R.drawable.ic_animation),
@@ -27,10 +33,9 @@ fun ComposeTopBar(viewModel: MainViewModel) {
                     modifier = Modifier.size(35.dp)
                 )
             }
-
             Text(text = "    ")
 
-            IconButton(onClick = { viewModel.openDialog.value = true}) {
+            IconButton(onClick = { viewModel.openDialog.value = true }) {
                 Icon(
                     painterResource(R.drawable.ic_layers),
                     "layers",

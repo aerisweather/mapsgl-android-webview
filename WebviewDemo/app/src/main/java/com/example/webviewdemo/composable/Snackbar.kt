@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
@@ -28,32 +29,34 @@ fun ComposeSnackbar(
             .padding(0.dp, 100.dp, 0.dp, 0.dp)
             .heightIn(max = 120.dp)
     ) {
-        Snackbar(action = {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .testTag("snack_error"),
-                contentAlignment = Alignment.CenterEnd
-            ) {
-                IconButton(onClick = {
-                    viewModel.openSnackbar.value = false
-                }) {
-                    Icon(
-                        painterResource(id = R.drawable.ic_info),
-                        contentDescription = "snack",
-                        tint = Color.White,
-                    )
+        Snackbar(
+            backgroundColor = colorResource(id = R.color.brand_variant), action = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag("snack_error"),
+                    contentAlignment = Alignment.CenterEnd,
+                ) {
+                    IconButton(onClick = {
+                        viewModel.openSnackbar.value = false
+                    }) {
+                        Icon(
+                            painterResource(id = R.drawable.ic_info),
+                            contentDescription = "snack",
+                            tint = Color.White,
+                        )
+                    }
                 }
-            }
-            Text(
-                text = viewModel.msg.value ?: "", color = Color.White, modifier = Modifier
-                    .padding(5.dp)
-                    .verticalScroll(
-                        rememberScrollState()
-                    )
-            )
-
-        }, modifier = Modifier.padding(10.dp)) {
+                Text(
+                    text = viewModel.msg.value ?: "", color = Color.White, modifier = Modifier
+                        .padding(5.dp)
+                        .verticalScroll(
+                            rememberScrollState()
+                        )
+                )
+            },
+            modifier = Modifier.padding(10.dp)
+        ) {
             Text(text = viewModel.msg.value ?: "", color = Color.White)
         }
     }
