@@ -51,6 +51,7 @@ fun ComposeWebView(viewModel: MainViewModel) {
             viewModel.showLegend,
             viewModel.showSnackbar,
             viewModel.updateTime,
+            viewModel.showProgress,
             getJSBuilder
         )
 

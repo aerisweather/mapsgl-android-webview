@@ -2,6 +2,7 @@ package com.example.webviewdemo
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -48,6 +49,9 @@ fun ComposeAnimationControl(viewModel: MainViewModel) {
                     contentAlignment = Alignment.Center
                 ) {
                     Text(text = viewModel.animateTime.value.replace("(", "\n("))
+                    if (viewModel.openProgress.value) {
+                        CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterEnd))
+                    }
                 }
             }
         }

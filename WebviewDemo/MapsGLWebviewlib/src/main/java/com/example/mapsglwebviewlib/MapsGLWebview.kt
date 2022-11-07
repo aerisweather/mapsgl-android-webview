@@ -12,6 +12,7 @@ class MapsGLWebview(
     decodeLegend: (jsonString: String) -> Unit,
     showSnackbar: (open: Boolean, msg: String?) -> Unit,
     updateTime: (time: String) -> Unit,
+    showProgress: (show: Boolean) -> Unit,
     getJSBuilder: (builder: JSBuilder) -> Unit
 ) : WebView(context) {
 
@@ -23,16 +24,14 @@ class MapsGLWebview(
 
     init {
         getJSBuilder(jsBuilder)
-
         layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.MATCH_PARENT
         )
-
         webViewClient = WebViewClient()
         settings.javaScriptEnabled = true
         addJavascriptInterface(
-            WebAppInterface(decodeLegend, showSnackbar, updateTime, jsBuilder),
+            WebAppInterface(decodeLegend, showSnackbar, updateTime, showProgress, jsBuilder),
             "Android"
         )
         load()

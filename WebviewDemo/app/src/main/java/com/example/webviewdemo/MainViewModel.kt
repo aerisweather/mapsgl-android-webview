@@ -17,6 +17,7 @@ class MainViewModel : ViewModel() {
     val openMenu = mutableStateOf(false)
     val openDialog = mutableStateOf(false)
     val openSnackbar = mutableStateOf(false)
+    val openProgress = mutableStateOf(false)
     val openAnimateControl = mutableStateOf(false)
     val animateTime = mutableStateOf("00:00:00")
     val animateState = mutableStateOf<TimelineState>(TimelineState.Stop)
@@ -35,6 +36,10 @@ class MainViewModel : ViewModel() {
 
     val showLegend: (jsonString: String) -> Unit = { base64 ->
         openLegends.value = Legend.decode(base64)
+    }
+
+    val showProgress: (show: Boolean) -> Unit = {
+        openProgress.value = it
     }
 }
 

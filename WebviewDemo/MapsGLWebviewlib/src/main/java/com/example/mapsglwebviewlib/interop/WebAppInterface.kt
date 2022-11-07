@@ -10,6 +10,7 @@ class WebAppInterface(
     private val decodeLegend: (jsonString: String) -> Unit,
     private val showSnackbar: (open: Boolean, msg: String?) -> Unit,
     private val updateTime: (time: String) -> Unit,
+    private val showProgress: (show: Boolean) -> Unit,
     private val jsBuilder: JSBuilder? = null
 ) {
     val TAG = "WebAppInterface"
@@ -57,11 +58,13 @@ class WebAppInterface(
     @JavascriptInterface
     fun onCtrlLoadStart() {
         android.util.Log.d(TAG, "onCtrlLoadStart")
+        showProgress(true)
     }
 
     @JavascriptInterface
     fun onCtrlLoadComplete() {
         android.util.Log.d(TAG, "onCtrlLoadComplete")
+        showProgress(false)
     }
 
     /*
