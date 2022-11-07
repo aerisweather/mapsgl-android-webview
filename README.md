@@ -1,6 +1,6 @@
 # mapsgl-android-webview
 
-Integrate [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and features into Android applications with MapsGLWebviewlib. In a Webview, a map with weather data is rendered through our [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/) using the webview.evaluateJavascript() method.  Native Kotlin environment can send javascript via Webview.evaluateJavascript() to control your map and its weather content.
+Integrate [MapsGL](https://www.aerisweather.com/products/mapsgl/) products and features into Android applications with MapsGLWebviewlib. In a Webview, a map with weather data is rendered through our [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/) using the webview.evaluateJavascript() method.  Native Kotlin environment can send javascript via Webview.evaluateJavascript() to control your map and its weather content.
 
 ## Permissions
 
@@ -8,7 +8,7 @@ Integrate [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and fe
 
 You'll first need access to our AerisWeather data and services. If you don't already have an account and active subscription, [sign up for an AerisWeather Developer account](https://www.aerisweather.com/signup/developer/). Upon signing up, a demo application with your client ID and secret keys will be generated which you can use for your account configuration below.
 
-Including a MapsGLWebview in your app requires you to first set up your account using `MapsGLAccount` and providing your keys in file MapsGLWebviewlib/src/main/res/values/strings.xml.
+Including a MapsGLWebview in your app requires you first to set up your account using `MapsGLAccount` and provide your keys in the file MapsGLWebviewlib/src/main/res/values/strings.xml.
 
 ```
 <resources>
@@ -17,7 +17,7 @@ Including a MapsGLWebview in your app requires you to first set up your account 
 ```
 #### Mapbox access token
 
-Next, add your mapboxGL public access token as [documented by mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/) in file MapsGLWebviewlib/src/main/assets/mapview_android.html.
+Next, add your mapboxGL public access token as [documented by mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/) in the file MapsGLWebviewlib/src/main/assets/mapview_android.html.
 
 ```
  window.addEventListener('load', () => {
@@ -26,7 +26,7 @@ Next, add your mapboxGL public access token as [documented by mapbox](https://do
 
 ## Getting Started
 
-1. Clone project to your working directory.
+1. Clone the project to your working directory.
 
    https://github.com/aerisweather/mapsgl-android-webview.git
 
@@ -34,16 +34,16 @@ Next, add your mapboxGL public access token as [documented by mapbox](https://do
    Android Gradle Plugin Version 7.2.2 \
    Gradle Version 7.5.1.
    
-3. Update and verify your permissions in library's strings.xml (Aeris id,secrect) and mapview_android.html (MapBox access token).  Exercising method configureMap() will instantiate a valid Mapcontroller object with supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
+3. Update and verify your permissions in the library's strings.xml (Aeris id,secrect) and mapview_android.html (MapBox access token).  Exercising method configureMap() will instantiate a valid Mapcontroller object with supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
 
 ## Kotlin-Javascript Interop
 
 Supplied in this example for MapsGL InterOp are four files: \
-These classes enable developer with MapsGL to render and interact with maps. \
+These classes enable developers with MapsGL to render and interact with maps. \
 a. JSBuilder.kt: Kotlin -> Javascript \
 b. WebAppInterface.kt: Javascript -> Kotlin \
 c. mapview_android.html: Javascript MapsGL interface \
-d. MapsGLWebview.kt: Host above html file 
+d. MapsGLWebview.kt: Host the above HTML file 
 
 <img width="450" src="https://user-images.githubusercontent.com/116283403/200030693-19f00295-efc3-4ef8-a9ba-b17b0cc1bcd3.png"/>
 
@@ -64,7 +64,7 @@ JSBuilder.getStartDate()
 JSBuilder.getEndDate()
 JSBuilder.getCurrentDate()
 ```
-As an example, to retrieve map's current center coordinate:
+As an example, to retrieve the map's current center coordinate:
 
 ```
 Kotlin -> Javascript call:     JSBuilder.getCenter()
@@ -105,13 +105,13 @@ Please review the Kotlin example app for additional features provided. These exa
 
 If you're looking for even more customization options beyond what's supported by this package, you can clone this repo and update the included `mapview_android.html` file with additional configurations and options supported by our core [MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/). 
 
-To run mapview_android.html in a browser (without Android), update flag:
+To run mapview_android.html in a browser (without Android), update the flag:
 
 ```
 var WEBVIEW = false; // set 'false' to run this without android
 ```
 
-Insert your aeris id/secret in Javascript configurMap() method.
+Insert your Aeris id/secret in Javascript configurMap() method.
 
 ```
 if(WEBVIEW == false) {
@@ -121,8 +121,8 @@ if(WEBVIEW == false) {
 ```
         
 
-By default this package uses the Mapsbox JS GL SDK in `mapview_android.html`. However, if you'd rather use a different mapping library, you can change this in your app bundle's `mapview_android.html` by instantiating a different map instance and updating the map controller to one provided from our MapsGL SDK. [Review our SDK documentation](https://www.aerisweather.com/docs/mapsgl/getting-started/) on how to configure its usage for different mapping libraries.
+By default, this package uses the Mapbox JS GL SDK in `mapview_android.html`. However, if you'd rather use a different mapping library, you can change this in your app bundle's `mapview_android.html` by instantiating a different map instance and updating the map controller to one provided by our MapsGL SDK. [Review our SDK documentation](https://www.aerisweather.com/docs/mapsgl/getting-started/) on how to configure its usage for different mapping libraries.
 
 ## Support
 
-Feel free to post an issue in this Github repo for any bugs, technical issues or questions you may have related to this package. For sales information regarding our [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and subscriptions, reach out to our [sales team](https://www.aerisweather.com/contact/sales/).
+Feel free to post an issue in this Github repo for any bugs, technical issues, or questions you may have related to this package. For sales information regarding our [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and subscriptions, reach out to our [sales team](https://www.aerisweather.com/contact/sales/).
