@@ -70,7 +70,7 @@ As an example, to retrieve the map's current center coordinate:
 Kotlin -> Javascript call:     JSBuilder.getCenter()
 Javascript -> Kotlin response: WebAppInterface.getCenter(lat:Float, lon:Float)
 ```
-<img height="400" src="https://user-images.githubusercontent.com/116283403/199754935-a2f0d303-c794-4f77-bb96-48cd3557cb01.png"/>  <img height="400" src="https://user-images.githubusercontent.com/116283403/199754088-10cd354f-464f-44f6-8ad9-d5df6dbe6f13.png"/>
+<img height="400" src="https://user-images.githubusercontent.com/116283403/200594669-4c970cc6-f157-4246-a71b-d4335566abc6.png"/>  <img height="400" src="https://user-images.githubusercontent.com/116283403/200595067-c5a12a62-211e-4b1a-9ab4-302562cd28aa.png"/>
 
 ## Events and MapsGLViewDelegate
 
