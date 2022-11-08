@@ -114,13 +114,6 @@ fun ComposeTopBar(viewModel: MainViewModel) {
 
                 DropdownMenuItem(onClick = {
                     viewModel.openMenu.value = false
-                    viewModel.jsBuilder?.getLegend()
-                }) {
-                    Text("get Legend")
-                }
-
-                DropdownMenuItem(onClick = {
-                    viewModel.openMenu.value = false
                     viewModel.jsBuilder?.getStartDate()
                 }) {
                     Text("get StartDate")
