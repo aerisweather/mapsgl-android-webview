@@ -123,6 +123,14 @@ if(WEBVIEW == false) {
 
 By default, this package uses the Mapbox JS GL SDK in `mapview_android.html`. However, if you'd rather use a different mapping library, you can change this in your app bundle's `mapview_android.html` by instantiating a different map instance and updating the map controller to one provided by our MapsGL SDK. [Review our SDK documentation](https://www.aerisweather.com/docs/mapsgl/getting-started/) on how to configure its usage for different mapping libraries.
 
+## Debugging Webview
+
+Follow [Google Remote debugging Webview direction](https://developer.chrome.com/docs/devtools/remote-debugging/webviews/) and add the following line of code.
+
+
+```
+setWebContentsDebuggingEnabled(true)
+```
 ## Support
 
 Feel free to post an issue in this Github repo for any bugs, technical issues, or questions you may have related to this package. For sales information regarding our [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and subscriptions, reach out to our [sales team](https://www.aerisweather.com/contact/sales/).
