@@ -70,7 +70,7 @@ As an example, to retrieve the map's current center coordinate:
 Kotlin -> Javascript call:     JSBuilder.getCenter()
 Javascript -> Kotlin response: WebAppInterface.getCenter(lat:Float, lon:Float)
 ```
-<img height="400" src="https://user-images.githubusercontent.com/116283403/199754935-a2f0d303-c794-4f77-bb96-48cd3557cb01.png"/>  <img height="400" src="https://user-images.githubusercontent.com/116283403/199754088-10cd354f-464f-44f6-8ad9-d5df6dbe6f13.png"/>
+<img height="400" src="https://user-images.githubusercontent.com/116283403/200594669-4c970cc6-f157-4246-a71b-d4335566abc6.png"/>  <img height="400" src="https://user-images.githubusercontent.com/116283403/200595067-c5a12a62-211e-4b1a-9ab4-302562cd28aa.png"/>
 
 ## Events and MapsGLViewDelegate
 
@@ -99,7 +99,7 @@ WebAppInterface.onAnimationAdvance(position: String, date: String)
 
 Please review the Kotlin example app for additional features provided. These examples demonstrate how to set up your mapGL including a legend view, and how to implement native-javascript interop.
 
-<img height="400" src="https://user-images.githubusercontent.com/116283403/199754113-a18d1497-e339-4d9e-b58d-5e95321ba65e.png"/>  <img height="400" src="https://user-images.githubusercontent.com/116283403/199745710-a44c19bf-38ff-4c75-9918-8f060842d7d5.png"/>
+<img height="400" src="https://user-images.githubusercontent.com/116283403/200595378-564888a5-4d94-412d-b32f-e0f3999ea8ad.png"/>  <img height="400" src="https://user-images.githubusercontent.com/116283403/200595407-91b7e14f-fb80-4de6-b975-daab618bd5af.png"/>
 
 ## Customization
 
@@ -123,6 +123,14 @@ if(WEBVIEW == false) {
 
 By default, this package uses the Mapbox JS GL SDK in `mapview_android.html`. However, if you'd rather use a different mapping library, you can change this in your app bundle's `mapview_android.html` by instantiating a different map instance and updating the map controller to one provided by our MapsGL SDK. [Review our SDK documentation](https://www.aerisweather.com/docs/mapsgl/getting-started/) on how to configure its usage for different mapping libraries.
 
+## Debugging Webview
+
+Follow [Google Remote debugging Webview direction](https://developer.chrome.com/docs/devtools/remote-debugging/webviews/) and add the following line of code.
+
+
+```
+setWebContentsDebuggingEnabled(true)
+```
 ## Support
 
 Feel free to post an issue in this Github repo for any bugs, technical issues, or questions you may have related to this package. For sales information regarding our [MapsGL](https://www.aerisweather.com/products/mapsgl/) product and subscriptions, reach out to our [sales team](https://www.aerisweather.com/contact/sales/).
