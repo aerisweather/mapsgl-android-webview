@@ -30,6 +30,7 @@ class MapsGLWebview(
         )
         webViewClient = WebViewClient()
         settings.javaScriptEnabled = true
+        setWebContentsDebuggingEnabled(true) // debugging
         addJavascriptInterface(
             WebAppInterface(decodeLegend, showSnackbar, updateTime, showProgress, jsBuilder),
             "Android"
