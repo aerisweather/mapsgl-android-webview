@@ -370,7 +370,8 @@
     }
 
     window.addEventListener('load', () => {
-        // mapboxgl.accessToken = 'Your-mapbox-access-token';
+        mapboxgl.accessToken = 'Your-mapbox-access-token';
+
         map = new mapboxgl.Map({
             container: document.getElementById('app'),
             style: 'mapbox://styles/mapbox/light-v9',
