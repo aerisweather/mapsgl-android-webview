@@ -17,7 +17,7 @@ Including a MapsGLWebview in your app requires you first to set up your account 
 ```
 #### Mapbox Access Token
 
-Next, add your mapboxGL 'public' Access Token as [documented by mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/) in the file MapsGLWebviewlib/src/main/assets/mapview_android.html.
+Next, add your Mapbox (public) Access Token as [documented by mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/) in the file MapsGLWebviewlib/src/main/assets/mapview_android.html.
 
 ```
  window.addEventListener('load', () => {
