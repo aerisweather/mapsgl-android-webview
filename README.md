@@ -4,7 +4,7 @@ Integrate [MapsGL](https://www.aerisweather.com/products/mapsgl/) products and f
 
 ## Permissions
 
-#### Aeris id and secret
+#### Aeris ID and Secret
 
 You'll first need access to our AerisWeather data and services. If you don't already have an account and active subscription, [sign up for an AerisWeather Developer account](https://www.aerisweather.com/signup/developer/). Upon signing up, a demo application with your client ID and secret keys will be generated which you can use for your account configuration below.
 
@@ -12,8 +12,8 @@ Including a MapsGLWebview in your app requires you first to set up your account 
 
 ```
 <resources>
-    <string name="aerisapi_client_id">Your-client-id</string>
-    <string name="aerisapi_client_secret">Your-client-secret</string>
+    <string name="aerisapi_client_id">Your-aerisapi-client-id</string>
+    <string name="aerisapi_client_secret">Your-aerisapi-client-secret</string>
 ```
 #### Mapbox access token
 
@@ -34,7 +34,7 @@ Next, add your mapboxGL public access token as [documented by mapbox](https://do
    Android Gradle Plugin Version 7.2.2 \
    Gradle Version 7.5.1.
    
-3. Update and verify your permissions in the library's strings.xml (Aeris id,secrect) and mapview_android.html (MapBox access token).  Exercising method configureMap() will instantiate a valid Mapcontroller object with supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
+3. Update and verify your permissions in the library's strings.xml (Aeris ID, Secret) and mapview_android.html (MapBox access token).  Exercising method configureMap() will instantiate a valid Mapcontroller object with supported options as [documented by our MapsGL Javascript SDK](https://www.aerisweather.com/docs/mapsgl/reference/map-controller/#configuration).
 
 ## Kotlin-Javascript Interop
 
