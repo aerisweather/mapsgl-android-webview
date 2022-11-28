@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">WebviewDemo</string>
-<!--    <string name="aerisapi_client_id">@string/client_id</string>-->
-<!--    <string name="aerisapi_client_secret">@string/client_secret</string>-->
-    <string name="aerisapi_client_id">X3Ji38TIMKwXp7LUE1LA1</string>
-    <string name="aerisapi_client_secret">c4xMFW96213tuCedOzkLMU8VpdZZaVOxLZ9wRR9F</string>
     <string name="animate_play">Play</string>
     <string name="animate_stop">Stop</string>
     <string name="animate_time_empty">--:--</string>
+    <string name="permission">Permission</string>
+    <string name="permission_desc">Please insert aeris id, secret and Mapbox token</string>
 </resources>
