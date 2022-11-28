@@ -1,6 +1,7 @@
 package com.example.webviewdemo.composable
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -72,7 +73,6 @@ fun ComposeWebView(viewModel: MainViewModel) {
     })
 }
 
-
 @Composable
 fun ComposeSecretDialog(viewModel: MainViewModel) {
     /*
@@ -82,6 +82,7 @@ fun ComposeSecretDialog(viewModel: MainViewModel) {
     val id = stringResource(id = com.example.mapsglwebviewlib.R.string.aerisapi_client_id)
     val secret = stringResource(id = com.example.mapsglwebviewlib.R.string.aerisapi_client_secret)
     if (id.lowercase().contains("your") || secret.lowercase().contains("your")) {
+        Log.d("MainWebview", stringResource(id = R.string.permission_desc))
         Dialog(onDismissRequest = { /*TODO*/ }) {
             Card() {
                 Column() {
