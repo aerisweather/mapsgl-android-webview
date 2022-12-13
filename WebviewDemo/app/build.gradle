@@ -32,6 +32,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    // Optionally configure plugin
+    ktlint {
+        debug.set(true)
+        //disabledRules.set(["no-wildcard-imports"])
+    }
     buildFeatures {
         compose true
     }
